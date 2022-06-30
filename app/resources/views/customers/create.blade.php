@@ -1,0 +1,68 @@
+@extends('customers.layout')
+  
+@section('content')
+<div class="row">
+    <div class="col-lg-12 margin-tb">
+        <div class="pull-left">
+            <h2>Add New Customer</h2>
+        </div>
+        <div class="pull-right">
+            <a class="btn btn-primary" href="{{ route('customers.index') }}"> Back</a>
+        </div>
+    </div>
+</div>
+   
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+   
+<form action="{{ route('customers.store') }}" method="POST">
+    @csrf
+  
+     <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>รหัสลูกค้า:</strong>
+                <input type="text" name="customerID" class="form-control" placeholder="customerID">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>ชื่อลูกค้า:</strong>
+                <input type="text" name="customerFirstname" class="form-control" placeholder="customerFirstname">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>นามสกุลลูกค้า:</strong>
+                <input type="text" name="customerLastname" class="form-control" placeholder="customerLastname">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>เบอร์โทรศัพท์:</strong>
+                <input type="text" name="phone" class="form-control" placeholder="phone">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>ที่อยู่:</strong>
+                <input type="text" name="address" class="form-control" placeholder="address">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+            <input type="reset" class="btn btn-warning" value="ยกเลิก" >
+            <input type="submit" class="btn btn-success" value="บันทึกข้อมูล" >
+            </div>
+        </div>
+     </div>
+</form>
+@endsection
